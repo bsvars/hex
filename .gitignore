@@ -48,3 +48,4 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 bsvars/tax23nPM.rda
+bsvarSIGNs/bsvarSIGNs.rda
