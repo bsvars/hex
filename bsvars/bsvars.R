@@ -3,8 +3,9 @@
 # Reproduction of the IRF from Lütkepohl, Shang, Uzeda, Woźniak (2024)
 ############################################################
 
-# estimate the model
+# estimate the model using bsvars v2.1.0
 ############################################################
+# remotes::install_version(package = "bsvars", version = "2.1.0")
 # library(bsvars)
 # data("us_fiscal_lsuw")
 # data("us_fiscal_ex")
