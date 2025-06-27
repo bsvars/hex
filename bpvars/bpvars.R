@@ -39,7 +39,7 @@ stickerColor = bspink
 
 # forecasts
 ############################################################
-# load("bvarPANELs/ilo_forecasts.rda")
+load("bpvars/ilo_forecasts.rda")
 
 data_period = 16:32
 COL_ur   = fore$COL$Y[2, data_period]
@@ -55,8 +55,8 @@ NEW_med  = apply(fore$BGD$forecasts[2,,], 1, median)
 NEW_hdi  = apply(fore$BGD$forecasts[2,,], 1, HDInterval::hdi, credMass = 0.95)
 
 
-svg(file = "bvarPANELs/fore.svg",
-    width = 1.1 * 9,
+svg(file = "bpvars/fore.svg",
+    width = 1 * 9,
     height = 0.95 * 6.5
 )
 par(
@@ -115,8 +115,8 @@ axis(2,
      ticks_vertical, 
      rep("",length(ticks_vertical)), 
      col = bsyell, 
-     lwd = 12, 
-     lwd.ticks = 12,
+     lwd = 14, 
+     lwd.ticks = 14,
      tcl = -1
 )
 ticks_horizontal    = c(1, 6, 11.5,
@@ -125,14 +125,14 @@ axis(1,
      ticks_horizontal, 
      rep("", length(ticks_horizontal)), 
      col = bsyell, 
-     lwd = 12, 
-     lwd.ticks = 12,
+     lwd = 14, 
+     lwd.ticks = 14,
      tcl = -1
 )
 dev.off()
 
 # image formattiing and including
-img <- magick::image_read_svg("bvarPANELs/fore.svg", width = 1 * 1080, height = 1 * 840)
+img <- magick::image_read_svg("bpvars/fore.svg", width = 1 * 1080, height = 1 * 840)
 # img |> magick::image_crop(geometry = "1450x950+200+240")  -> img
 
 # font adjustments
@@ -151,17 +151,17 @@ showtext::showtext_auto()
 
 
 final_res <- hexSticker::sticker(img,
-                                package = "bvarPANELs",
-                                p_size = 80,
+                                package = "bpvars",
+                                p_size = 120,
                                 p_family = "font_fam",
                                 p_fontface = "bold",
-                                p_y = 1.35,
+                                p_y = 1.4,
                                 p_color = bsyell,
                                 s_x = 1,
-                                s_y = 0.84,
+                                s_y = 0.82,
                                 s_width = 1.1,
                                 s_height = 1.2,
-                                filename = "bvarPANELs/bvarPANELs.png",
+                                filename = "bpvars/bpvars.png",
                                 h_fill = bspink,
                                 h_color = bsyell,
                                 h_size = 1.3,
