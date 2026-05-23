@@ -5,9 +5,9 @@
 ############################################################
 # Define colors
 # bspink = "#ffd700"
-bspink = "white"
-bsyell = "#ff69b4"
-bsyell_trans  = rgb(t(col2rgb(bsyell, alpha = F)), alpha=50, maxColorValue=255)
+bspink = "#2B0E66"
+bsyell = "#F500BD"
+bsyell_trans  = rgb(t(col2rgb(bsyell, alpha = F)), alpha=200, maxColorValue=255)
 
 stickerColor = bspink
 
@@ -28,7 +28,7 @@ stickerColor = bspink
 
 h    = 8
 
-load("bvars/fore.rda")
+# load("bvars/fore.rda")
 gdp_me = apply(fore$forecasts[2,1:h,], 1, mean)
 gdp_sd = apply(fore$forecasts[2,1:h,], 1, sd)
 
@@ -67,8 +67,8 @@ par(
 # theta = 146
 # phi   = 22
 
-theta = 152
-phi   = 14
+theta = 160
+phi   = 10
 
 f4    = plot3D::persp3D(
   x=x, 
@@ -135,7 +135,7 @@ for (i in 1:h){
   lines(
     f4.l, 
     lwd=6, 
-    col= bsyell
+    col= bsyell_trans
   )
 }
 dev.off()
@@ -167,8 +167,8 @@ final_res <- hexSticker::sticker(img,
                                 p_y = 1.4,
                                 p_color = bsyell,
                                 s_x = 1.15,
-                                s_y = 1,
-                                s_width = 2.1,
+                                s_y = 1.15,
+                                s_width = 2.3,
                                 s_height = 1.65,
                                 filename = "bvars/bvars.png",
                                 h_fill = bspink,
