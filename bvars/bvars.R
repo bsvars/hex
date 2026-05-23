@@ -5,9 +5,9 @@
 ############################################################
 # Define colors
 # bspink = "#ffd700"
-bspink = "#2B0E66"
-bsyell = "#F500BD"
-bsyell_trans  = rgb(t(col2rgb(bsyell, alpha = F)), alpha=200, maxColorValue=255)
+bspink = "#F500BD"
+bsyell = "#2B0E66"
+bsyell_trans  = rgb(t(col2rgb(bsyell, alpha = F)), alpha=180, maxColorValue=255)
 
 stickerColor = bspink
 
@@ -26,7 +26,7 @@ stickerColor = bspink
 # save(fore, file = "bvars/fore.rda")
 
 
-h    = 8
+h    = 9
 
 # load("bvars/fore.rda")
 gdp_me = apply(fore$forecasts[2,1:h,], 1, mean)
@@ -34,8 +34,8 @@ gdp_sd = apply(fore$forecasts[2,1:h,], 1, sd)
 
 limits.1    = range(gdp_me[h]+3*gdp_sd[h], gdp_me[h]-3*gdp_sd[h])
 point.f     = gdp_me
-interval.f  = rbind(point.f + qnorm(.975)*gdp_sd, 
-                    point.f + qnorm(.025)*gdp_sd)
+interval.f  = rbind(point.f + qnorm(.95)*gdp_sd, 
+                    point.f + qnorm(.05)*gdp_sd)
 
 
 x      = seq(
@@ -68,7 +68,7 @@ par(
 # phi   = 22
 
 theta = 160
-phi   = 10
+phi   = 8
 
 f4    = plot3D::persp3D(
   x=x, 
@@ -104,27 +104,27 @@ plot3D::perspbox(
   col = NULL, 
   plot = TRUE
 )
-plot3D::polygon3D(
-  x=c(interval.f[1,],interval.f[2,h:1]),
-  y=c(1:h,h:1), z=rep(0,2*h),
-  col = bsyell_trans,
-  NAcol = "white",
-  border = NA,
-  add = TRUE,
-  plot = TRUE
-)
-f4.l1 = trans3d(
-  x=point.f,
-  y=yy,
-  z=0,
-  pmat=f4
-)
-lines(
-  f4.l1,
-  lwd=8,
-  lend = "butt",
-  col= bsyell
-)
+# plot3D::polygon3D(
+#   x=c(interval.f[1,],interval.f[2,h:1]),
+#   y=c(1:h,h:1), z=rep(0,2*h),
+#   col = bsyell_trans,
+#   NAcol = "white",
+#   border = NA,
+#   add = TRUE,
+#   plot = TRUE
+# )
+# f4.l1 = trans3d(
+#   x=point.f,
+#   y=yy,
+#   z=0,
+#   pmat=f4
+# )
+# lines(
+#   f4.l1,
+#   lwd=8,
+#   lend = "butt",
+#   col= bsyell
+# )
 for (i in 1:h){
   f4.l = trans3d(
     x=x, 
@@ -135,7 +135,7 @@ for (i in 1:h){
   lines(
     f4.l, 
     lwd=6, 
-    col= bsyell_trans
+    col= rgb(t(col2rgb(bsyell, alpha = F)), alpha=70 + 15 * i, maxColorValue=255)
   )
 }
 dev.off()
@@ -161,10 +161,10 @@ showtext::showtext_auto()
 
 final_res <- hexSticker::sticker(img,
                                 package = "bvars",
-                                p_size = 60,
+                                p_size = 65,
                                 p_family = "font_fam",
                                 p_fontface = "bold",
-                                p_y = 1.4,
+                                p_y = 1.35,
                                 p_color = bsyell,
                                 s_x = 1.15,
                                 s_y = 1.15,
