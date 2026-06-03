@@ -135,7 +135,7 @@ for (i in 1:h){
   lines(
     f4.l, 
     lwd=6, 
-    col= rgb(t(col2rgb(bsyell, alpha = F)), alpha=70 + 15 * i, maxColorValue=255)
+    col= rgb(t(col2rgb(bsyell, alpha = F)), alpha=12 + 27 * i, maxColorValue=255)
   )
 }
 dev.off()
